@@ -1,0 +1,4 @@
+`verilator_config
+lint_off -rule UNUSEDPARAM -file "*spu_pkg.sv"
+lint_off -rule DECLFILENAME -file "*spu_pkg.sv"
+lint_off -rule BLKSEQ -file "*spu_core.sv"

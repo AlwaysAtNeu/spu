@@ -1,0 +1,10 @@
+spu_pkg.sv
+spu_popcount.sv
+spu_hvrf.sv
+spu_gen.sv
+spu_acc.sv
+spu_dma.sv
+spu_search.sv
+spu_core.sv
+spu_csr.sv
+spu_top.sv

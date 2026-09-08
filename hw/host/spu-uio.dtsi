@@ -1,0 +1,24 @@
+/* Device-tree overlay for the PS bring-up path (bd_ps.tcl): exposes the SPU
+ * register window through the generic UIO driver and reserves a 64 MB
+ * physically contiguous buffer for SPU data via u-dma-buf.
+ *
+ * PetaLinux: put this in project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+ * Kernel:    CONFIG_UIO=y CONFIG_UIO_PDRV_GENIRQ=y, boot arg uio_pdrv_genirq.of_id=generic-uio
+ * u-dma-buf: https://github.com/ikwzm/udmabuf  (out-of-tree module)
+ */
+/ {
+    amba_pl: amba_pl@0 {
+        spu_top_0: spu@a4000000 {
+            compatible = "generic-uio";
+            reg = <0x0 0xa4000000 0x0 0x40000>;      /* 256 KB: CSRs + program memory */
+            interrupt-parent = <&gic>;
+            interrupts = <0 84 4>;                   /* pl_ps_irq0 = SPI 84 on Versal */
+        };
+    };
+    udmabuf@0 {
+        compatible = "ikwzm,u-dma-buf";
+        device-name = "udmabuf0";
+        size = <0x04000000>;                         /* 64 MB SPU data window */
+        dma-coherent;
+    };
+};

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+hw/tb/obj_dir/
+hw/fpga/vhk158/build/
+hw/fpga/vhk158/ip_repo/
+*.jou
+*.log
+.DS_Store
