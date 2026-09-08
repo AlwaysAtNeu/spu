@@ -57,6 +57,4 @@ Optional FPGA reference implementation (Vivado 2023.1+): `cd hw/fpga/vhk158 && v
 | RTL (`hw/rtl`, 10 modules, Verilator `-Wall` lint clean) | Done; `tests/test_cosim.py` runs 10 programs (incl. 3 randomized differential tests) bit-exact against the golden model; all five examples match the host reference on the RTL; measured cycles in `hw/README.md` |
 | VHK158 Vivado scripts / device tree / driver path | Written, **not verified on real Vivado or hardware** (no Vivado on the development machine); items marked `VERIFY` need to be confirmed once in the GUI |
 
-Why the design is the way it is (choice of representation, trade-offs of each unit, performance and scaling) is explained in `docs/00_design_rationale.md`; how symbolic models map onto the SPU is in `docs/04_symbolic_models.md`.
-
 Measured on the RTL (Verilator, scaled to 250 MHz): analogy reasoning 46 instructions / 2,154 cycles; forward chaining 6 rules deriving 27 facts 620 k cycles ≈ 2.5 ms; HDC classification with 32 features 7.6 k cycles per training sample, 31 µs per inference.
